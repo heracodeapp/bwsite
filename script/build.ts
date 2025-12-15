@@ -67,7 +67,7 @@ async function buildAll() {
     external: externals,
     logLevel: "info",
     alias: {
-      "@shared": path.resolve(projectRoot, "shared"),
+      "@shared/schema": path.resolve(projectRoot, "shared/schema.ts"),
     },
   });
 
