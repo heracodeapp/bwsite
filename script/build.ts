@@ -1,11 +1,6 @@
 import { build as esbuild } from "esbuild";
 import { build as viteBuild } from "vite";
-import react from "@vitejs/plugin-react";
 import { rm, readFile } from "fs/promises";
-import path from "path";
-import { fileURLToPath } from "url";
-
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // server deps to bundle to reduce openat(2) syscalls
 // which helps cold start times
@@ -41,10 +36,7 @@ async function buildAll() {
   await rm("dist", { recursive: true, force: true });
 
   console.log("building client...");
-  const projectRoot = path.resolve(__dirname, "..");
-  await viteBuild({
-    configFile: path.resolve(projectRoot, "vite.config.ts"),
-  });
+  await viteBuild();
 
   console.log("building server...");
   const pkg = JSON.parse(await readFile("package.json", "utf-8"));
@@ -66,9 +58,7 @@ async function buildAll() {
     minify: true,
     external: externals,
     logLevel: "info",
-    resolveExtensions: [".ts", ".js", ".json"],
   });
-
 }
 
 buildAll().catch((err) => {
