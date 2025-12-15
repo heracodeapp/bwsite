@@ -6,7 +6,7 @@ import passport from "passport";
 import { Strategy as GoogleStrategy } from "passport-google-oauth20";
 import { storage } from "./storage";
 import { pool } from "./db";
-import { insertQuoteSchema, insertProjectSchema, insertReviewSchema, insertPaymentCodeSchema } from "../shared/schema";
+import { insertQuoteSchema, insertProjectSchema, insertReviewSchema, insertPaymentCodeSchema } from "@shared/schema";
 import { z } from "zod";
 
 // WhatsApp notification via CallMeBot
