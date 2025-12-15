@@ -66,6 +66,7 @@ async function buildAll() {
     minify: true,
     external: externals,
     logLevel: "info",
+    resolveExtensions: [".ts", ".js", ".json"],
   });
 
 }
