@@ -1,0 +1,101 @@
+16:29:26.685 Running build in Washington, D.C., USA (East) – iad1
+16:29:26.686 Build machine configuration: 2 cores, 8 GB
+16:29:26.695 Cloning github.com/heracodeapp/bw (Branch: main, Commit: 61f7847)
+16:29:26.696 Skipping build cache, deployment was triggered without cache.
+16:29:27.031 Cloning completed: 335.000ms
+16:29:27.386 Running "vercel build"
+16:29:27.809 Vercel CLI 50.0.1
+16:29:28.523 Running "install" command: `npm install --include=dev`...
+16:30:13.296 npm warn deprecated @esbuild-kit/core-utils@3.3.2: Merged into tsx: https://tsx.is
+16:30:13.343 npm warn deprecated @esbuild-kit/esm-loader@2.6.5: Merged into tsx: https://tsx.is
+16:30:22.019 
+16:30:22.019 added 494 packages, and audited 495 packages in 53s
+16:30:22.020 
+16:30:22.020 57 packages are looking for funding
+16:30:22.020   run `npm fund` for details
+16:30:22.041 
+16:30:22.042 5 moderate severity vulnerabilities
+16:30:22.042 
+16:30:22.042 To address all issues (including breaking changes), run:
+16:30:22.042   npm audit fix --force
+16:30:22.042 
+16:30:22.042 Run `npm audit` for details.
+16:30:22.331 
+16:30:22.333 > rest-express@1.0.0 build
+16:30:22.333 > tsx script/build.ts
+16:30:22.333 
+16:30:23.477 building client...
+16:30:23.544 [36mvite v5.4.21 [32mbuilding for production...[36m[39m
+16:30:23.810 transforming...
+16:30:25.267 
+16:30:25.268 A PostCSS plugin did not pass the `from` option to `postcss.parse`. This may cause imported assets to be incorrectly transformed. If you've recently added a PostCSS plugin that raised this warning, please contact the package author to fix the issue.
+16:30:32.912 [32m✓[39m 3782 modules transformed.
+16:30:33.484 rendering chunks...
+16:30:34.055 computing gzip size...
+16:30:34.143 [2m../dist/public/[22m[32mindex.html                                         [39m[1m[2m    1.35 kB[22m[1m[22m[2m │ gzip:   0.63 kB[22m
+16:30:34.145 [2m../dist/public/[22m[2massets/[22m[32mlogo-braga-work_1765492800121-eaCejSGU.jpg  [39m[1m[2m    4.71 kB[22m[1m[22m
+16:30:34.146 [2m../dist/public/[22m[2massets/[22m[35mindex-CSwzdDrh.css                          [39m[1m[2m   88.55 kB[22m[1m[22m[2m │ gzip:  14.48 kB[22m
+16:30:34.147 [2m../dist/public/[22m[2massets/[22m[36mpurify.es-B9ZVCkUG.js                       [39m[1m[2m   22.64 kB[22m[1m[22m[2m │ gzip:   8.75 kB[22m
+16:30:34.150 [2m../dist/public/[22m[2massets/[22m[36mindex.es-B45eNges.js                        [39m[1m[2m  150.44 kB[22m[1m[22m[2m │ gzip:  51.42 kB[22m
+16:30:34.150 [2m../dist/public/[22m[2massets/[22m[36mhtml2canvas.esm-CBrSDip1.js                 [39m[1m[2m  201.42 kB[22m[1m[22m[2m │ gzip:  48.03 kB[22m
+16:30:34.151 [2m../dist/public/[22m[2massets/[22m[36mindex-Cp0k_P2G.js                           [39m[1m[33m1,400.95 kB[39m[22m[2m │ gzip: 414.77 kB[22m
+16:30:34.152 [33m
+16:30:34.152 (!) Some chunks are larger than 500 kB after minification. Consider:
+16:30:34.152 - Using dynamic import() to code-split the application
+16:30:34.152 - Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+16:30:34.152 - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.[39m
+16:30:34.156 [32m✓ built in 10.38s[39m
+16:30:34.156 building server...
+16:30:34.599 
+16:30:34.599   dist/index.cjs  1.2mb ⚠️
+16:30:34.599 
+16:30:34.600 ⚡ Done in 415ms
+16:30:34.754 Installing dependencies...
+16:30:35.988 
+16:30:35.989 added 3 packages, and removed 1 package in 1s
+16:30:35.990 
+16:30:35.990 58 packages are looking for funding
+16:30:35.990   run `npm fund` for details
+16:30:36.422 Using TypeScript 5.6.3 (local user-provided)
+16:30:43.651 api/index.ts(116,53): error TS2353: Object literal may only specify known properties, and 'googleId' does not exist in type '{ email?: string | SQL<unknown> | PgColumn<ColumnBaseConfig<ColumnDataType, string>, {}, {}>; username?: string | SQL<unknown> | PgColumn<...>; displayName?: string | ... 1 more ... | PgColumn<...>; }'.
+16:30:43.653 api/index.ts(119,17): error TS2769: No overload matches this call.
+16:30:43.653   Overload 1 of 2, '(value: { email: string | SQL<unknown> | Placeholder<string, any>; username: string | SQL<unknown> | Placeholder<string, any>; displayName: string | SQL<unknown> | Placeholder<...>; }): PgInsertBase<...>', gave the following error.
+16:30:43.653     Object literal may only specify known properties, and 'googleId' does not exist in type '{ email: string | SQL<unknown> | Placeholder<string, any>; username: string | SQL<unknown> | Placeholder<string, any>; displayName: string | SQL<unknown> | Placeholder<...>; }'.
+16:30:43.654   Overload 2 of 2, '(values: { email: string | SQL<unknown> | Placeholder<string, any>; username: string | SQL<unknown> | Placeholder<string, any>; displayName: string | SQL<unknown> | Placeholder<...>; }[]): PgInsertBase<...>', gave the following error.
+16:30:43.654     Object literal may only specify known properties, and 'googleId' does not exist in type '{ email: string | SQL<unknown> | Placeholder<string, any>; username: string | SQL<unknown> | Placeholder<string, any>; displayName: string | SQL<unknown> | Placeholder<...>; }[]'.
+16:30:43.654 api/index.ts(212,57): error TS2769: No overload matches this call.
+16:30:43.654   Overload 1 of 2, '(value: { title: string | SQL<unknown> | Placeholder<string, any>; }): PgInsertBase<PgTableWithColumns<{ name: "projects"; schema: undefined; columns: { id: PgColumn<{ name: "id"; tableName: "projects"; dataType: "number"; ... 11 more ...; generated: undefined; }, {}, {}>; ... 7 more ...; createdAt: PgColumn<...>; }; dialect: "pg"; }>, ... 4 more ..., never>', gave the following error.
+16:30:43.658     Argument of type '{ description?: string; title?: string; imageUrl?: string; projectUrl?: string; mediaType?: string; isActive?: boolean; displayOrder?: number; }' is not assignable to parameter of type '{ title: string | SQL<unknown> | Placeholder<string, any>; }'.
+16:30:43.659       Property 'title' is optional in type '{ description?: string; title?: string; imageUrl?: string; projectUrl?: string; mediaType?: string; isActive?: boolean; displayOrder?: number; }' but required in type '{ title: string | SQL<unknown> | Placeholder<string, any>; }'.
+16:30:43.659   Overload 2 of 2, '(values: { title: string | SQL<unknown> | Placeholder<string, any>; }[]): PgInsertBase<PgTableWithColumns<{ name: "projects"; schema: undefined; columns: { id: PgColumn<{ name: "id"; tableName: "projects"; dataType: "number"; ... 11 more ...; generated: undefined; }, {}, {}>; ... 7 more ...; createdAt: PgColumn<...>; }; dialect: "pg"; }>, ... 4 more ..., never>', gave the following error.
+16:30:43.659     Argument of type '{ description?: string; title?: string; imageUrl?: string; projectUrl?: string; mediaType?: string; isActive?: boolean; displayOrder?: number; }' is not assignable to parameter of type '{ title: string | SQL<unknown> | Placeholder<string, any>; }[]'.
+16:30:43.659       Type '{ description?: string; title?: string; imageUrl?: string; projectUrl?: string; mediaType?: string; isActive?: boolean; displayOrder?: number; }' is missing the following properties from type '{ title: string | SQL<unknown> | Placeholder<string, any>; }[]': length, pop, push, concat, and 29 more.
+16:30:43.660 api/index.ts(247,55): error TS2769: No overload matches this call.
+16:30:43.660   Overload 1 of 2, '(value: { userId: number | SQL<unknown> | Placeholder<string, any>; rating: number | SQL<unknown> | Placeholder<string, any>; }): PgInsertBase<PgTableWithColumns<{ name: "reviews"; schema: undefined; columns: { ...; }; dialect: "pg"; }>, ... 4 more ..., never>', gave the following error.
+16:30:43.661     Argument of type '{ userId?: number; rating?: number; comment?: string; }' is not assignable to parameter of type '{ userId: number | SQL<unknown> | Placeholder<string, any>; rating: number | SQL<unknown> | Placeholder<string, any>; }'.
+16:30:43.661       Property 'userId' is optional in type '{ userId?: number; rating?: number; comment?: string; }' but required in type '{ userId: number | SQL<unknown> | Placeholder<string, any>; rating: number | SQL<unknown> | Placeholder<string, any>; }'.
+16:30:43.661   Overload 2 of 2, '(values: { userId: number | SQL<unknown> | Placeholder<string, any>; rating: number | SQL<unknown> | Placeholder<string, any>; }[]): PgInsertBase<PgTableWithColumns<{ name: "reviews"; schema: undefined; columns: { ...; }; dialect: "pg"; }>, ... 4 more ..., never>', gave the following error.
+16:30:43.661     Argument of type '{ userId?: number; rating?: number; comment?: string; }' is not assignable to parameter of type '{ userId: number | SQL<unknown> | Placeholder<string, any>; rating: number | SQL<unknown> | Placeholder<string, any>; }[]'.
+16:30:43.662       Type '{ userId?: number; rating?: number; comment?: string; }' is missing the following properties from type '{ userId: number | SQL<unknown> | Placeholder<string, any>; rating: number | SQL<unknown> | Placeholder<string, any>; }[]': length, pop, push, concat, and 29 more.
+16:30:43.662 api/index.ts(267,53): error TS2769: No overload matches this call.
+16:30:43.662   Overload 1 of 2, '(value: { email: string | SQL<unknown> | Placeholder<string, any>; firstName: string | SQL<unknown> | Placeholder<string, any>; lastName: string | SQL<unknown> | Placeholder<...>; phone: string | ... 1 more ... | Placeholder<...>; serviceType: string | ... 1 more ... | Placeholder<...>; businessSegment: string | ... 1 more ... | Placeholder<...>; }): PgInsertBase<...>', gave the following error.
+16:30:43.662     Argument of type '{ email?: string; userId?: number; firstName?: string; lastName?: string; phone?: string; countryCode?: string; serviceType?: string; businessSegment?: string; additionals?: string[]; projectDescription?: string; status?: string; }' is not assignable to parameter of type '{ email: string | SQL<unknown> | Placeholder<string, any>; firstName: string | SQL<unknown> | Placeholder<string, any>; lastName: string | SQL<unknown> | Placeholder<...>; phone: string | ... 1 more ... | Placeholder<...>; serviceType: string | ... 1 more ... | Placeholder<...>; businessSegment: string | ... 1 more ...'.
+16:30:43.662       Property 'email' is optional in type '{ email?: string; userId?: number; firstName?: string; lastName?: string; phone?: string; countryCode?: string; serviceType?: string; businessSegment?: string; additionals?: string[]; projectDescription?: string; status?: string; }' but required in type '{ email: string | SQL<unknown> | Placeholder<string, any>; firstName: string | SQL<unknown> | Placeholder<string, any>; lastName: string | SQL<unknown> | Placeholder<...>; phone: string | ... 1 more ... | Placeholder<...>; serviceType: string | ... 1 more ... | Placeholder<...>; businessSegment: string | ... 1 more ...'.
+16:30:43.662   Overload 2 of 2, '(values: { email: string | SQL<unknown> | Placeholder<string, any>; firstName: string | SQL<unknown> | Placeholder<string, any>; lastName: string | SQL<unknown> | Placeholder<...>; phone: string | ... 1 more ... | Placeholder<...>; serviceType: string | ... 1 more ... | Placeholder<...>; businessSegment: string | ... 1 more ... | Placeholder<...>; }[]): PgInsertBase<...>', gave the following error.
+16:30:43.662     Argument of type '{ email?: string; userId?: number; firstName?: string; lastName?: string; phone?: string; countryCode?: string; serviceType?: string; businessSegment?: string; additionals?: string[]; projectDescription?: string; status?: string; }' is not assignable to parameter of type '{ email: string | SQL<unknown> | Placeholder<string, any>; firstName: string | SQL<unknown> | Placeholder<string, any>; lastName: string | SQL<unknown> | Placeholder<...>; phone: string | ... 1 more ... | Placeholder<...>; serviceType: string | ... 1 more ... | Placeholder<...>; businessSegment: string | ... 1 more ...'.
+16:30:43.662       Type '{ email?: string; userId?: number; firstName?: string; lastName?: string; phone?: string; countryCode?: string; serviceType?: string; businessSegment?: string; additionals?: string[]; projectDescription?: string; status?: string; }' is missing the following properties from type '{ email: string | SQL<unknown> | Placeholder<string, any>; firstName: string | SQL<unknown> | Placeholder<string, any>; lastName: string | SQL<unknown> | Placeholder<...>; phone: string | ... 1 more ... | Placeholder<...>; serviceType: string | ... 1 more ... | Placeholder<...>; businessSegment: string | ... 1 more ...': length, pop, push, concat, and 29 more.
+16:30:43.662 api/index.ts(389,58): error TS2769: No overload matches this call.
+16:30:43.662   Overload 1 of 2, '(value: { amount: string | SQL<unknown> | Placeholder<string, any>; code: string | SQL<unknown> | Placeholder<string, any>; }): PgInsertBase<PgTableWithColumns<{ name: "payment_codes"; schema: undefined; columns: { ...; }; dialect: "pg"; }>, ... 4 more ..., never>', gave the following error.
+16:30:43.662     Argument of type '{ description?: string; stripePaymentId?: string; amount?: string; code?: string; usedByEmail?: string; usedByName?: string; }' is not assignable to parameter of type '{ amount: string | SQL<unknown> | Placeholder<string, any>; code: string | SQL<unknown> | Placeholder<string, any>; }'.
+16:30:43.662       Property 'amount' is optional in type '{ description?: string; stripePaymentId?: string; amount?: string; code?: string; usedByEmail?: string; usedByName?: string; }' but required in type '{ amount: string | SQL<unknown> | Placeholder<string, any>; code: string | SQL<unknown> | Placeholder<string, any>; }'.
+16:30:43.662   Overload 2 of 2, '(values: { amount: string | SQL<unknown> | Placeholder<string, any>; code: string | SQL<unknown> | Placeholder<string, any>; }[]): PgInsertBase<PgTableWithColumns<{ name: "payment_codes"; schema: undefined; columns: { ...; }; dialect: "pg"; }>, ... 4 more ..., never>', gave the following error.
+16:30:43.662     Argument of type '{ description?: string; stripePaymentId?: string; amount?: string; code?: string; usedByEmail?: string; usedByName?: string; }' is not assignable to parameter of type '{ amount: string | SQL<unknown> | Placeholder<string, any>; code: string | SQL<unknown> | Placeholder<string, any>; }[]'.
+16:30:43.662       Type '{ description?: string; stripePaymentId?: string; amount?: string; code?: string; usedByEmail?: string; usedByName?: string; }' is missing the following properties from type '{ amount: string | SQL<unknown> | Placeholder<string, any>; code: string | SQL<unknown> | Placeholder<string, any>; }[]': length, pop, push, concat, and 29 more.
+16:30:43.663 
+16:30:45.866 Build Completed in /vercel/output [1m]
+16:30:46.088 Deploying outputs...
+16:30:51.630 Deployment completed
+16:30:52.580 Creating build cache...
+16:31:14.311 Created build cache: 21.730s
+16:31:14.312 Uploading build cache [106.23 MB]
+16:31:15.607 Build cache uploaded: 1.295s

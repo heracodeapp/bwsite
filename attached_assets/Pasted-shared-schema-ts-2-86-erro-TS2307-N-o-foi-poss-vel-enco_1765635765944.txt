@@ -1,0 +1,19 @@
+shared/schema.ts(2,86): erro TS2307: Não foi possível encontrar o módulo 'drizzle-orm/pg-core' ou suas declarações de tipo correspondentes.
+shared/schema.ts(3,27): erro TS2307: Não foi possível encontrar o módulo 'drizzle-orm' ou suas declarações de tipo correspondentes.
+shared/schema.ts(4,36): erro TS2307: Não foi possível encontrar o módulo 'drizzle-zod' ou suas declarações de tipo correspondentes.
+shared/schema.ts(5,19): erro TS2307: Não foi possível encontrar o módulo 'zod' ou suas declarações de tipo correspondentes.
+shared/schema.ts(19,51): erro TS7031: O elemento de ligação 'many' tem implicitamente um tipo 'any'.
+shared/schema.ts(43,53): erro TS7031: O elemento de ligação 'one' tem implicitamente um tipo 'any'.
+shared/schema.ts(73,55): erro TS7031: O elemento de ligação 'one' tem implicitamente um tipo 'any'.
+shared/schema.ts(107,57): erro TS7031: O elemento de ligação 'one' tem implicitamente um tipo 'any'.
+shared/schema.ts(132,67): erro TS7031: O elemento de ligação 'one' tem implicitamente um tipo 'any'.
+server/storage.ts(2,36): erro TS2307: Não foi possível encontrar o módulo 'drizzle-orm' ou suas declarações de tipo correspondentes.
+server/db.ts(1,25): erro TS2307: Não foi possível encontrar o módulo 'drizzle-orm/node-postgres' ou suas declarações de tipo correspondentes.
+server/db.ts(2,16): erro TS2307: Não foi possível encontrar o módulo 'pg' ou suas declarações de tipo correspondentes.
+server/db.ts(7,6): erro TS2591: Não foi possível encontrar o nome 'process'. Você precisa instalar definições de tipo para node? Tente `npm i --save-dev @types/node` e adicione 'node' ao campo types no seu tsconfig.
+server/db.ts(13,50): erro TS2591: Não foi possível encontrar o nome 'process'. Você precisa instalar definições de tipo para o Node? Tente `npm i --save-dev @types/node` e adicione 'node' ao campo types no seu tsconfig.
+Compilação concluída em /vercel/output [2s]
+Implementando os resultados...
+Implantação concluída
+Criando cache de compilação...
+O upload do cache foi ignorado porque nenhum arquivo foi preparado.

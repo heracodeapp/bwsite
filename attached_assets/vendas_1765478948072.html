@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loja de Perfumes e Cosméticos</title>
+    <meta name="description" content="Descubra nossa coleção premium de perfumes e cosméticos com entrega rápida. Produtos de alta qualidade e elegância.">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="logo">Luxe Beauty</h1>
+                <nav class="nav">
+                    <a href="#/" class="nav-link" data-testid="link-home">Início</a>
+                    <a href="#/products" class="nav-link" data-testid="link-products">Produtos</a>
+                    <a href="#/admin" class="nav-link" data-testid="link-admin">Admin</a>
+                </nav>
+                <button class="cart-button" onclick="toggleCart()" data-testid="button-cart">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <span class="cart-count" id="cartCount" data-testid="text-cart-count">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="app"></main>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h2>Carrinho de Compras</h2>
+            <button class="close-cart" onclick="toggleCart()" data-testid="button-close-cart">×</button>
+        </div>
+        <div class="cart-items" id="cartItems"></div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cartTotal" data-testid="text-cart-total">R$ 0,00</span>
+            </div>
+            <button class="checkout-button" onclick="checkout()" data-testid="button-checkout">Finalizar Compra</button>
+        </div>
+    </div>
+
+    <!-- Cart Overlay -->
+    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Braga Work. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

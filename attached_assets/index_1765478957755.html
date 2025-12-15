@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BragaWork - Desenvolvimento de Sites para Negócios</title>
+    <meta name="description" content="A BragaWork desenvolve sites modernos e funcionais para impulsionar seu negócio. Solicite um orçamento gratuito e veja nossos projetos realizados.">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="BragaWork - Desenvolvimento de Sites para Negócios">
+    <meta property="og:description" content="Desenvolvemos sites modernos e funcionais para impulsionar seu negócio">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="assets/logo-braga-work.jpg">
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-animation">
+            <div class="code-brackets">
+                <span>&lt;/&gt;</span>
+            </div>
+            <div class="loading-text">Carregando...</div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="assets/logo-braga-work.jpg" alt="BragaWork Logo">
+                <span>BragaWork</span>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="#home" class="nav-link">Início</a>
+                <a href="#about" class="nav-link">Sobre</a>
+                <a href="#projects" class="nav-link">Projetos</a>
+                <a href="#quote" class="nav-link">Orçamento</a>
+                <a href="#contact" class="nav-link">Contato</a>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-background">
+            <div class="floating-code">
+                <div class="code-snippet" style="--delay: 0s">console.log('Hello World');</div>
+                <div class="code-snippet" style="--delay: 2s">function createWebsite() {</div>
+                <div class="code-snippet" style="--delay: 4s">  return 'Amazing Site';</div>
+                <div class="code-snippet" style="--delay: 6s">}</div>
+                <div class="code-snippet" style="--delay: 8s">&lt;div class="success"&gt;</div>
+            </div>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="typewriter">Desenvolvemos Sites</span>
+                <br>
+                <span class="highlight">Para Seu Negócio</span>
+            </h1>
+            <p class="hero-subtitle">
+                Transformamos suas ideias em soluções digitais modernas e funcionais
+                que impulsionam o crescimento do seu negócio.
+            </p>
+            <div class="hero-buttons">
+                <a href="#quote" class="btn btn-primary">
+                    <i class="fas fa-rocket"></i>
+                    Solicitar Orçamento
+                </a>
+                <a href="#projects" class="btn btn-secondary">
+                    <i class="fas fa-eye"></i>
+                    Ver Projetos
+                </a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-arrow">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">O Que Fazemos</h2>
+                <p class="section-subtitle">Especializados em criar experiências digitais únicas</p>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>BragaWork - Seu Parceiro Digital</h3>
+                    <h3 class="section-title">O Que Fazemos?</h2>
+                    <p>
+                        Na BragaWork, desenvolvemos sites modernos e funcionais que não apenas impressionam 
+                        visualmente, mas também convertem visitantes em clientes. Nossa expertise combina 
+                        design inovador com tecnologia de ponta para criar soluções que fazem a diferença 
+                        no seu negócio.
+                    </p>
+                    
+                    <div class="features">
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h4>Design Responsivo</h4>
+                                <p>Sites que funcionam perfeitamente em todos os dispositivos</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-rocket"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h4>Performance Otimizada</h4>
+                                <p>Carregamento rápido para melhor experiência do usuário</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-search"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h4>SEO Otimizado</h4>
+                                <p>Melhor posicionamento nos resultados de busca</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-visual">
+                    <div class="tech-stack">
+                        <div class="tech-item" style="--delay: 0.1s">
+                            <i class="fab fa-html5"></i>
+                            <span>HTML5</span>
+                        </div>
+                        <div class="tech-item" style="--delay: 0.2s">
+                            <i class="fab fa-css3-alt"></i>
+                            <span>CSS3</span>
+                        </div>
+                        <div class="tech-item" style="--delay: 0.3s">
+                            <i class="fab fa-js-square"></i>
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="tech-item" style="--delay: 0.4s">
+                            <i class="fab fa-react"></i>
+                            <span>React</span>
+                        </div>
+                        <div class="tech-item" style="--delay: 0.5s">
+                            <i class="fab fa-node-js"></i>
+                            <span>Node.js</span>
+                        </div>
+                        <div class="tech-item" style="--delay: 0.6s">
+                            <i class="fas fa-database"></i>
+                            <span>MySQL</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Carousel Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-header">
+            <h2 class="section-title">Nossos Projetos</h2>
+            <p class="section-subtitle">Conheça alguns dos sites que desenvolvemos</p>
+            </div>
+
+            <div class="carousel-container">
+            <div class="carousel-slides" id="projects-carousel">
+                <!-- Slides gerados pelo JS -->
+            </div>
+
+            <div class="carousel-controls">
+                <button class="carousel-btn prev-btn" id="prev-btn">
+                <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="carousel-btn next-btn" id="next-btn">
+                <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+
+            <div class="carousel-indicators" id="carousel-indicators">
+                <!-- Indicators -->
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="quote" class="quote">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Vamos Conversar?</h2>
+                <p class="section-subtitle">Clique no botão abaixo para iniciar uma conversa no WhatsApp e nos contar sobre seu projeto.</p>
+            </div>
+            
+            <div class="contact-button-container">
+                <a href="https://wa.me/351927512038" target="_blank" class="btn btn-primary whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i>
+                    Conversar no WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="assets/logo-braga-work.jpg" alt="BragaWork Logo">
+                        <span>BragaWork</span>
+                    </div>
+                    <p>Desenvolvendo o futuro digital do seu negócio com tecnologia e criatividade.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Serviços</h4>
+                    <ul>
+                        <li><a href="#about">Desenvolvimento Web</a></li>
+                        <li><a href="#projects">Design Responsivo</a></li>
+                        <li><a href="#quote">Consultoria Digital</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contato</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-envelope"></i> bragawork01@gmail.com</p>
+                        <p><i class="fas fa-phone"></i> +351 927 512 038</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 BragaWork. Todos os direitos reservados.</p>
+                <div class="social-links">
+                    <a href="https://wa.me/351927512038" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://instagram.com/braga.work" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@braga.work_?_t=ZM-90MByncsFiN&_r=1" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Success Modal -->
+    <div id="success-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="fas fa-check-circle"></i>
+                <h3>Solicitação Enviada!</h3>
+            </div>
+            <div class="modal-body">
+                <p>Obrigado pelo seu interesse! Recebemos sua solicitação de orçamento e entraremos em contato em breve.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" onclick="closeModal()">Entendi</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Link (hidden) -->
+
+
+    <!-- carousel.js deve ser carregado depois do DOM -->
+    <script src="js/main.js"></script>
+    
+ 
+</body>
+</html>

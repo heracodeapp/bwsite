@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studio Sobrancelhas - Realce a sua beleza</title>
+    <meta name="description" content="Serviços especializados em design de sobrancelhas, microblading e mais. Agende sua transformação e descubra o poder de um olhar perfeito!">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --background: hsl(350, 20%, 98%);
+            --foreground: hsl(20, 14%, 15%);
+            --card: hsl(0, 0%, 100%);
+            --card-foreground: hsl(20, 14%, 15%);
+            --primary: hsl(340, 82%, 52%);
+            --primary-foreground: hsl(0, 0%, 98%);
+            --secondary: hsl(350, 30%, 95%);
+            --secondary-foreground: hsl(20, 14%, 15%);
+            --muted: hsl(350, 15%, 92%);
+            --muted-foreground: hsl(20, 8%, 45%);
+            --accent: hsl(45, 93%, 58%);
+            --accent-foreground: hsl(20, 14%, 15%);
+            --border: hsl(350, 15%, 90%);
+            --font-sans: 'Inter', sans-serif;
+            --font-serif: 'Playfair Display', serif;
+        }
+
+        .dark {
+            --background: hsl(350, 15%, 8%);
+            --foreground: hsl(350, 15%, 92%);
+            --card: hsl(350, 12%, 12%);
+            --card-foreground: hsl(350, 15%, 92%);
+            --primary: hsl(340, 65%, 45%);
+            --primary-foreground: hsl(350, 15%, 95%);
+            --secondary: hsl(350, 20%, 15%);
+            --secondary-foreground: hsl(350, 15%, 92%);
+            --muted: hsl(350, 12%, 18%);
+            --muted-foreground: hsl(350, 8%, 65%);
+            --accent: hsl(45, 75%, 35%);
+            --accent-foreground: hsl(350, 15%, 95%);
+            --border: hsl(350, 12%, 20%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--background);
+            color: var(--foreground);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-serif);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Navigation */
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: var(--primary);
+            z-index: 100;
+            transition: width 0.2s;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 50;
+            background: var(--background);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border);
+            transition: all 0.3s;
+        }
+
+        nav.scrolled {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 1.5rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            font-family: var(--font-serif);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            color: var(--foreground);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary);
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--foreground);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .mobile-controls {
+            display: none;
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-top: 1px solid var(--border);
+            margin-top: 1rem;
+        }
+
+        .mobile-menu.active {
+            display: flex;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: 1px solid var(--border);
+            color: var(--foreground);
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .theme-toggle:hover {
+            background: var(--muted);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 5rem;
+            background: linear-gradient(135deg, var(--background) 0%, var(--secondary) 50%, var(--background) 100%);
+            position: relative;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero .highlight {
+            color: var(--primary);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--muted-foreground);
+            margin-bottom: 2rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            font-size: 1.125rem;
+            font-weight: 600;
+            border-radius: 0.5rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--primary-foreground);
+        }
+
+        .btn-primary:hover {
+            opacity: 0.9;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-secondary {
+            background: var(--accent);
+            color: var(--accent-foreground);
+        }
+
+        .btn-secondary:hover {
+            opacity: 0.9;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+            border-radius: 1rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 5rem 0;
+            background: var(--card);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-header p {
+            font-size: 1.25rem;
+            color: var(--muted-foreground);
+            max-width: 48rem;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--background);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-card img {
+            width: 100%;
+            height: 12rem;
+            object-fit: cover;
+            border-radius: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: var(--muted-foreground);
+            margin-bottom: 1rem;
+        }
+
+        .service-duration {
+            color: var(--primary);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            padding: 5rem 0;
+            background: var(--secondary);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            background: var(--card);
+            border-radius: 0.75rem;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 16rem;
+            object-fit: cover;
+        }
+
+        .gallery-item-info {
+            padding: 1rem;
+        }
+
+        .gallery-item-service {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .gallery-item-desc {
+            font-size: 0.875rem;
+            color: var(--muted-foreground);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+
+        .modal-content img {
+            max-width: 100%;
+            max-height: 80vh;
+            object-fit: contain;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: white;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+        }
+
+        /* Reviews Section */
+        .reviews {
+            padding: 5rem 0;
+            background: var(--card);
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .review-card {
+            background: var(--background);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+        }
+
+        .review-header {
+            margin-bottom: 1rem;
+        }
+
+        .review-name {
+            font-weight: 600;
+            font-size: 1.125rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .review-stars {
+            display: flex;
+            gap: 0.25rem;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .review-service {
+            font-size: 0.875rem;
+            color: var(--primary);
+        }
+
+        .review-text {
+            color: var(--muted-foreground);
+            font-style: italic;
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: 5rem 0;
+            background: var(--card);
+        }
+
+        .faq-list {
+            max-width: 56rem;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 1rem;
+        }
+
+        .faq-question {
+            width: 100%;
+            text-align: left;
+            padding: 1.5rem;
+            background: var(--background);
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--foreground);
+        }
+
+        .faq-question:hover {
+            border-color: var(--primary);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            padding: 0 1.5rem;
+        }
+
+        .faq-answer.active {
+            max-height: 500px;
+            padding: 1rem 1.5rem;
+        }
+
+        .faq-answer p {
+            color: var(--muted-foreground);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 5rem 0;
+            background: var(--secondary);
+        }
+
+        .contact-info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-info-item {
+            text-align: center;
+        }
+
+        .contact-info-icon {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .contact-info-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-info-text {
+            color: var(--muted-foreground);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: var(--primary);
+            font-size: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.1);
+        }
+
+        .contact-buttons {
+            text-align: center;
+        }
+
+        .contact-buttons h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-buttons-grid {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            max-width: 48rem;
+            margin: 0 auto;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--foreground);
+            color: var(--background);
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        footer .logo {
+            color: var(--background);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        footer p {
+            opacity: 0.8;
+            margin-bottom: 1rem;
+        }
+
+        footer .social-links {
+            margin-bottom: 1rem;
+        }
+
+        footer .social-links a {
+            color: var(--background);
+            opacity: 0.8;
+        }
+
+        footer .social-links a:hover {
+            opacity: 1;
+        }
+
+        footer .copyright {
+            opacity: 0.6;
+            font-size: 0.875rem;
+        }
+
+        /* Scroll to Top Button */
+        .scroll-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--primary);
+            color: var(--primary-foreground);
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+            z-index: 40;
+        }
+
+        .scroll-top.visible {
+            display: flex;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-0.25rem);
+        }
+
+        /* Icons (Simple SVG replacements) */
+        .icon {
+            width: 1.25rem;
+            height: 1.25rem;
+            display: inline-block;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .mobile-controls {
+                display: flex;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero img {
+                height: 400px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .reviews-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-buttons-grid {
+                flex-direction: column;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-indicator" id="scrollProgress"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">Studio Sobrancelhas</div>
+                
+                <ul class="nav-menu">
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#galeria">Galeria</a></li>
+                    <li><a href="#avaliacoes">Avaliações</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                    <li><button class="theme-toggle" id="themeToggle">🌙</button></li>
+                </ul>
+
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    
+                    <button class="mobile-menu-toggle" id="mobileMenuToggle">☰</button>
+                </div>
+            </div>
+
+            <div class="mobile-menu" id="mobileMenu">
+                <a href="#inicio">Início</a>
+                <a href="#servicos">Serviços</a>
+                <a href="#galeria">Galeria</a>
+                <a href="#avaliacoes">Avaliações</a>
+                <a href="#contato">Contato</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div>
+                    <h1>
+                        Realce a sua <span class="highlight">beleza.</span><br>
+                        Defina o seu <span class="highlight">olhar.</span>
+                    </h1>
+                    <p>
+                        Serviços especializados em design de sobrancelhas, microblading e mais. 
+                        Agende sua transformação e descubra o poder de um olhar perfeito!
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="https://wa.me/351927512038?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20um%20hor%C3%A1rio%20para%20um%20servi%C3%A7o%20de%20sobrancelhas." 
+                           class="btn btn-primary" target="_blank">
+                            💬 Agendar pelo WhatsApp
+                        </a>
+                        <a href="" 
+                           class="btn btn-secondary" target="_blank">
+                            📅 Agendar pelo Zappy
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <img src="attached_assets/1_1758224418366.jpg" alt="Cliente com sobrancelhas perfeitamente desenhadas">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicos" class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Serviços para um Olhar Perfeito</h2>
+                <p>Oferecemos técnicas especializadas para valorizar sua beleza natural com resultados duradouros e profissionais.</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <img src="attached_assets/2_1758224418366.jpg" alt="Design de sobrancelhas profissional com resultado perfeito">
+                    <h3>Design de Sobrancelhas</h3>
+                    <p>Técnica personalizada que analisa o formato do seu rosto para criar sobrancelhas que realçam sua beleza natural. Processo indolor com resultados imediatos e duradouros.</p>
+                    <div class="service-duration">⭐ Resultado imediato • Durabilidade de 4-6 semanas</div>
+                </div>
+
+                <div class="service-card">
+                    <img src="attached_assets/3_1758224418366.jpg" alt="Mapeamento e micropigmentação profissional das sobrancelhas">
+                    <h3>Micropigmentação / Microblading</h3>
+                    <p>Técnica semi-permanente que desenha fios naturais, preenchendo falhas e criando volume. Mapeamento preciso para um resultado natural e personalizado.</p>
+                    <div class="service-duration">⭐ Semi-permanente • Durabilidade de 1-2 anos</div>
+                </div>
+
+                <div class="service-card">
+                    <img src="attached_assets/4_1758224418366.jpg" alt="Procedimento profissional de sobrancelhas sendo realizado">
+                    <h3>Procedimentos Especializados</h3>
+                    <p>Procedimentos profissionais realizados com técnica e precisão. Cada cliente recebe atenção personalizada para resultados únicos e naturais.</p>
+                    <div class="service-duration">⭐ Procedimento personalizado • Durabilidade variável</div>
+                </div>
+
+                <div class="service-card">
+                    <img src="attached_assets/5_1758224418367.jpg" alt="Tratamento profissional especializado em sobrancelhas">
+                    <h3>Tratamentos Profissionais</h3>
+                    <p>Tratamentos especializados com produtos de alta qualidade. Técnicas avançadas para realçar a beleza natural das suas sobrancelhas.</p>
+                    <div class="service-duration">⭐ Tratamento completo • Resultados duradouros</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="galeria" class="gallery">
+        <div class="container">
+            <div class="section-header">
+                <h2>Transformações que Inspiram</h2>
+                <p>Veja o resultado do nosso trabalho através das transformações reais das nossas clientes.</p>
+            </div>
+
+            <div class="gallery-grid">
+                <div class="gallery-item" onclick="openModal(0)">
+                    <img src="attached_assets/1_1758224418366.jpg" alt="Processo de design profissional das sobrancelhas com pincel">
+                    <div class="gallery-item-info">
+                        <p class="gallery-item-service">Design Profissional</p>
+                        <p class="gallery-item-desc">Técnica Especializada</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" onclick="openModal(1)">
+                    <img src="attached_assets/2_1758224418366.jpg" alt="Resultado final com sobrancelhas perfeitamente definidas">
+                    <div class="gallery-item-info">
+                        <p class="gallery-item-service">Resultado Perfeito</p>
+                        <p class="gallery-item-desc">Sobrancelhas Definidas</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" onclick="openModal(2)">
+                    <img src="attached_assets/3_1758224418366.jpg" alt="Processo de mapeamento e medição das sobrancelhas">
+                    <div class="gallery-item-info">
+                        <p class="gallery-item-service">Mapeamento Preciso</p>
+                        <p class="gallery-item-desc">Técnica de Medição</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" onclick="openModal(3)">
+                    <img src="attached_assets/4_1758224418366.jpg" alt="Procedimento profissional sendo realizado">
+                    <div class="gallery-item-info">
+                        <p class="gallery-item-service">Procedimento Especializado</p>
+                        <p class="gallery-item-desc">Atendimento Profissional</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" onclick="openModal(4)">
+                    <img src="attached_assets/5_1758224418367.jpg" alt="Aplicação de técnica avançada em sobrancelhas">
+                    <div class="gallery-item-info">
+                        <p class="gallery-item-service">Técnica Avançada</p>
+                        <p class="gallery-item-desc">Precisão e Cuidado</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" onclick="openModal(5)">
+                    <img src="attached_assets/6_1758224418367.jpg" alt="Mapeamento detalhado para formato ideal das sobrancelhas">
+                    <div class="gallery-item-info">
+                        <p class="gallery-item-service">Mapeamento Detalhado</p>
+                        <p class="gallery-item-desc">Análise Completa</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal -->
+    <div id="imageModal" class="modal" onclick="closeModal()">
+        <button class="modal-close" onclick="closeModal()">×</button>
+        <div class="modal-content">
+            <img id="modalImage" src="" alt="">
+        </div>
+    </div>
+
+    <!-- Reviews Section -->
+    <section id="avaliacoes" class="reviews">
+        <div class="container">
+            <div class="section-header">
+                <h2>Avaliações das Nossas Clientes</h2>
+                <p>Veja o que nossas clientes dizem sobre nossos serviços e resultados alcançados.</p>
+            </div>
+
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-header">
+                        <h4 class="review-name">Maria Silva</h4>
+                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                        <p class="review-service">📅 Microblading • Dezembro 2023</p>
+                    </div>
+                    <p class="review-text">"Ficou perfeito! O microblading que fiz aqui durou mais de um ano e sempre recebo elogios. A profissional é muito cuidadosa e o resultado ficou super natural."</p>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header">
+                        <h4 class="review-name">Ana Costa</h4>
+                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                        <p class="review-service">📅 Laminação • Janeiro 2024</p>
+                    </div>
+                    <p class="review-text">"Ambiente super limpo e profissional. Fiz a laminação e amei o resultado! Minhas sobrancelhas ficaram com um volume incrível e muito naturais."</p>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header">
+                        <h4 class="review-name">Carla Mendes</h4>
+                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                        <p class="review-service">📅 Design de Sobrancelhas • Novembro 2023</p>
+                    </div>
+                    <p class="review-text">"Melhor investimento que fiz! O design de sobrancelha transformou completamente meu rosto. Agora acordo bonita todos os dias. Recomendo muito!"</p>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header">
+                        <h4 class="review-name">Julia Santos</h4>
+                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                        <p class="review-service">📅 Henna • Dezembro 2023</p>
+                    </div>
+                    <p class="review-text">"Atendimento nota 10! Explicou todo o procedimento, tirou todas as dúvidas. A henna ficou linda e durou exatamente o tempo prometido. Voltarei com certeza!"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq">
+        <div class="container">
+            <div class="section-header">
+                <h2>Perguntas Frequentes</h2>
+                <p>Esclarecemos suas principais dúvidas sobre nossos procedimentos e serviços.</p>
+            </div>
+
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(0)">
+                        <span>Quanto tempo dura o procedimento de design de sobrancelhas?</span>
+                        <span>+</span>
+                    </button>
+                    <div class="faq-answer" id="faq-0">
+                        <p>O procedimento de design de sobrancelhas dura aproximadamente 45 minutos a 1 hora, incluindo consulta, análise do formato do rosto, desenho e finalização.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(1)">
+                        <span>Qual a durabilidade do microblading?</span>
+                        <span>+</span>
+                    </button>
+                    <div class="faq-answer" id="faq-1">
+                        <p>O microblading tem duabilidade entre 1 a 2 anos, dependendo do tipo de pele, cuidados pós-procedimento e exposição ao sol. Recomendamos retoque anual para manter o resultado.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(2)">
+                        <span>O procedimento de microblading dói?</span>
+                        <span>+</span>
+                    </button>
+                    <div class="faq-answer" id="faq-2">
+                        <p>O desconforto é mínimo. Aplicamos anestésico tópico antes e durante o procedimento para garantir seu conforto. A maioria das clientes relata apenas uma leve sensação.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(3)">
+                        <span>Posso fazer design de sobrancelhas se tenho pelos muito finos?</span>
+                        <span>+</span>
+                    </button>
+                    <div class="faq-answer" id="faq-3">
+                        <p>Sim! O design de sobrancelhas é especialmente benéfico para quem tem pelos finos. Usamos técnicas que valorizam os pelos existentes e criam volume natural.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(4)">
+                        <span>Quais os cuidados pós-procedimento?</span>
+                        <span>+</span>
+                    </button>
+                    <div class="faq-answer" id="faq-4">
+                        <p>Evite molhar a região por 24h, não use maquiagem na área por 3 dias, aplique pomada cicatrizante conforme orientação e evite exposição solar direta por 1 semana.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(5)">
+                        <span>Preciso fazer alguma preparação antes do procedimento?</span>
+                        <span>+</span>
+                    </button>
+                    <div class="faq-answer" id="faq-5">
+                        <p>Evite retirar pelos das sobrancelhas por pelo menos 1 semana antes. Não use ácidos na região 3 dias antes e evite bebidas alcoólicas 24h antes do procedimento.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contato" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Fale Conosco</h2>
+                <p>Entre em contato para agendar sua consulta ou esclarecer dúvidas. Estamos aqui para realizar sua transformação!</p>
+            </div>
+
+            <div class="contact-info-grid">
+                <div class="contact-info-item">
+                    <div class="contact-info-icon">📍</div>
+                    <h4 class="contact-info-title">Endereço</h4>
+                    <p class="contact-info-text">Rua Jose dos Campos</p>
+                </div>
+
+                <div class="contact-info-item">
+                    <div class="contact-info-icon">🕐</div>
+                    <h4 class="contact-info-title">Funcionamento</h4>
+                    <div class="contact-info-text">
+                        <p>Segunda a Sexta: 9h às 18h</p>
+                        <p>Sábado: 9h às 16h</p>
+                        <p>Domingo: Fechado</p>
+                    </div>
+                </div>
+
+                <div class="contact-info-item">
+                    <div class="contact-info-icon">🔗</div>
+                    <h4 class="contact-info-title">Redes Sociais</h4>
+                    <div class="social-links">
+                        <a href="https://instagram.com/braga.work" target="_blank" aria-label="Instagram">📷</a>
+                        <a href="https://wa.me/351927512038" target="_blank" aria-label="WhatsApp">💬</a>
+                        <a href="mailto:contato@studiosobrancelhas.com" aria-label="Email">📧</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-buttons">
+                <h3>Agende Seu Horário</h3>
+                <div class="contact-buttons-grid">
+                    <a href="https://wa.me/351927512038?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20um%20hor%C3%A1rio%20para%20um%20servi%C3%A7o%20de%20sobrancelhas." 
+                       class="btn btn-primary" target="_blank">
+                        💬 Agendar pelo WhatsApp
+                    </a>
+                    <a href="" 
+                       class="btn btn-secondary" target="_blank">
+                        📅 Agendar pelo Zappy
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="logo">Studio Sobrancelhas</div>
+            <p>Realçando sua beleza natural com técnicas especializadas e atendimento personalizado.</p>
+            <div class="social-links">
+                <a href="https://instagram.com/braga.work" target="_blank" aria-label="Instagram">📷</a>
+                <a href="https://wa.me/351927512038" target="_blank" aria-label="WhatsApp">💬</a>
+                <a href="mailto:contato@studiosobrancelhas.com" aria-label="Email">📧</a>
+            </div>
+            <p class="copyright">© 2025 Braga Work. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top" id="scrollTop" onclick="scrollToTop()">↑</button>
+
+    <script>
+        // Scroll Progress
+        window.addEventListener('scroll', () => {
+            const winScroll = document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('scrollProgress').style.width = scrolled + '%';
+
+            // Navbar scroll effect
+            const navbar = document.getElementById('navbar');
+            if (winScroll > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+
+            // Scroll to top button
+            const scrollTop = document.getElementById('scrollTop');
+            if (winScroll > 300) {
+                scrollTop.classList.add('visible');
+            } else {
+                scrollTop.classList.remove('visible');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        mobileMenuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            mobileMenuToggle.textContent = mobileMenu.classList.contains('active') ? '✕' : '☰';
+        });
+
+        // Close mobile menu when clicking on a link
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                mobileMenuToggle.textContent = '☰';
+            });
+        });
+
+        // Smooth scroll with offset for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const navbarHeight = 80;
+                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navbarHeight - 20;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const themeToggleMobile = document.getElementById('themeToggleMobile');
+        const html = document.documentElement;
+
+        function toggleTheme() {
+            html.classList.toggle('dark');
+            const isDark = html.classList.contains('dark');
+            themeToggle.textContent = isDark ? '☀️' : '🌙';
+            themeToggleMobile.textContent = isDark ? '☀️' : '🌙';
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        }
+
+        themeToggle.addEventListener('click', toggleTheme);
+        themeToggleMobile.addEventListener('click', toggleTheme);
+
+        // Load saved theme
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            html.classList.add('dark');
+            themeToggle.textContent = '☀️';
+            themeToggleMobile.textContent = '☀️';
+        }
+
+        // FAQ Toggle
+        function toggleFAQ(index) {
+            const answer = document.getElementById(`faq-${index}`);
+            answer.classList.toggle('active');
+        }
+
+        // Gallery Modal
+        const galleryImages = [
+            'attached_assets/1_1758224418366.jpg',
+            'attached_assets/2_1758224418366.jpg',
+            'attached_assets/3_1758224418366.jpg',
+            'attached_assets/4_1758224418366.jpg',
+            'attached_assets/5_1758224418367.jpg',
+            'attached_assets/6_1758224418367.jpg'
+        ];
+
+        function openModal(index) {
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            modalImage.src = galleryImages[index];
+            modal.classList.add('active');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.remove('active');
+        }
+
+        // Scroll to Top
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</body>
+</html>
+

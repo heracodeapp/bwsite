@@ -1,0 +1,66 @@
+15:57:00.013 Running build in Washington, D.C., USA (East) – iad1
+15:57:00.014 Build machine configuration: 2 cores, 8 GB
+15:57:00.024 Cloning github.com/heracodeapp/bw (Branch: main, Commit: 78b106e)
+15:57:00.025 Skipping build cache, deployment was triggered without cache.
+15:57:00.302 Cloning completed: 278.000ms
+15:57:00.696 Running "vercel build"
+15:57:01.181 Vercel CLI 50.0.1
+15:57:01.980 Running "install" command: `npm install --include=dev`...
+15:57:43.919 npm warn deprecated @esbuild-kit/esm-loader@2.6.5: Merged into tsx: https://tsx.is
+15:57:44.001 npm warn deprecated @esbuild-kit/core-utils@3.3.2: Merged into tsx: https://tsx.is
+15:57:52.402 
+15:57:52.402 added 493 packages, and audited 494 packages in 50s
+15:57:52.403 
+15:57:52.403 56 packages are looking for funding
+15:57:52.403   run `npm fund` for details
+15:57:52.424 
+15:57:52.425 5 moderate severity vulnerabilities
+15:57:52.425 
+15:57:52.426 To address all issues (including breaking changes), run:
+15:57:52.426   npm audit fix --force
+15:57:52.426 
+15:57:52.426 Run `npm audit` for details.
+15:57:52.707 
+15:57:52.708 > rest-express@1.0.0 build
+15:57:52.708 > tsx script/build.ts
+15:57:52.709 
+15:57:53.839 building client...
+15:57:53.912 [36mvite v5.4.21 [32mbuilding for production...[36m[39m
+15:57:54.168 transforming...
+15:57:55.593 
+15:57:55.594 A PostCSS plugin did not pass the `from` option to `postcss.parse`. This may cause imported assets to be incorrectly transformed. If you've recently added a PostCSS plugin that raised this warning, please contact the package author to fix the issue.
+15:58:03.769 [32m✓[39m 3782 modules transformed.
+15:58:04.389 rendering chunks...
+15:58:05.067 computing gzip size...
+15:58:05.213 [2m../dist/public/[22m[32mindex.html                                         [39m[1m[2m    1.35 kB[22m[1m[22m[2m │ gzip:   0.63 kB[22m
+15:58:05.214 [2m../dist/public/[22m[2massets/[22m[32mlogo-braga-work_1765492800121-eaCejSGU.jpg  [39m[1m[2m    4.71 kB[22m[1m[22m
+15:58:05.214 [2m../dist/public/[22m[2massets/[22m[35mindex-CSwzdDrh.css                          [39m[1m[2m   88.55 kB[22m[1m[22m[2m │ gzip:  14.48 kB[22m
+15:58:05.217 [2m../dist/public/[22m[2massets/[22m[36mpurify.es-B9ZVCkUG.js                       [39m[1m[2m   22.64 kB[22m[1m[22m[2m │ gzip:   8.75 kB[22m
+15:58:05.217 [2m../dist/public/[22m[2massets/[22m[36mindex.es-B45eNges.js                        [39m[1m[2m  150.44 kB[22m[1m[22m[2m │ gzip:  51.42 kB[22m
+15:58:05.218 [2m../dist/public/[22m[2massets/[22m[36mhtml2canvas.esm-CBrSDip1.js                 [39m[1m[2m  201.42 kB[22m[1m[22m[2m │ gzip:  48.03 kB[22m
+15:58:05.218 [2m../dist/public/[22m[2massets/[22m[36mindex-Cp0k_P2G.js                           [39m[1m[33m1,400.95 kB[39m[22m[2m │ gzip: 414.77 kB[22m
+15:58:05.218 [32m✓ built in 11.08s[39m
+15:58:05.219 building server...
+15:58:05.219 [33m
+15:58:05.219 (!) Some chunks are larger than 500 kB after minification. Consider:
+15:58:05.219 - Using dynamic import() to code-split the application
+15:58:05.220 - Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+15:58:05.220 - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.[39m
+15:58:05.526 
+15:58:05.527   dist/index.cjs  1.2mb ⚠️
+15:58:05.528 
+15:58:05.530 ⚡ Done in 286ms
+15:58:05.686 Installing dependencies...
+15:58:06.951 
+15:58:06.952 added 3 packages, and removed 1 package in 1s
+15:58:06.953 
+15:58:06.953 57 packages are looking for funding
+15:58:06.953   run `npm fund` for details
+15:58:07.385 Using TypeScript 5.6.3 (local user-provided)
+15:58:14.903 Build Completed in /vercel/output [1m]
+15:58:15.140 Deploying outputs...
+15:58:20.771 Deployment completed
+15:58:21.726 Creating build cache...
+15:58:43.688 Created build cache: 21.961s
+15:58:43.689 Uploading build cache [106.15 MB]
+15:58:45.671 Build cache uploaded: 1.982s

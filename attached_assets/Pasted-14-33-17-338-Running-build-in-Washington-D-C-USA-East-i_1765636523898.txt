@@ -1,0 +1,149 @@
+14:33:17.338 Running build in Washington, D.C., USA (East) – iad1
+14:33:17.344 Build machine configuration: 2 cores, 8 GB
+14:33:17.629 Cloning github.com/heracodeapp/bw (Branch: main, Commit: 05dccda)
+14:33:17.635 Previous build caches not available.
+14:33:17.994 Cloning completed: 360.000ms
+14:33:18.962 Running "vercel build"
+14:33:19.587 Vercel CLI 50.0.1
+14:33:20.528 Running "install" command: `npm install --include=dev`...
+14:33:58.789 npm warn deprecated @esbuild-kit/esm-loader@2.6.5: Merged into tsx: https://tsx.is
+14:33:58.829 npm warn deprecated @esbuild-kit/core-utils@3.3.2: Merged into tsx: https://tsx.is
+14:34:07.650 
+14:34:07.651 added 493 packages, and audited 494 packages in 47s
+14:34:07.652 
+14:34:07.652 56 packages are looking for funding
+14:34:07.652   run `npm fund` for details
+14:34:07.673 
+14:34:07.674 5 moderate severity vulnerabilities
+14:34:07.675 
+14:34:07.675 To address all issues (including breaking changes), run:
+14:34:07.675   npm audit fix --force
+14:34:07.675 
+14:34:07.675 Run `npm audit` for details.
+14:34:07.962 
+14:34:07.962 > rest-express@1.0.0 build
+14:34:07.962 > tsx script/build.ts
+14:34:07.962 
+14:34:09.187 building client...
+14:34:09.219 [36mvite v5.4.21 [32mbuilding for production...[36m[39m
+14:34:09.478 transforming...
+14:34:09.775 node_modules/@tanstack/react-query/build/modern/useQueries.js (1:0): Module level directives cause errors when bundled, "use client" in "node_modules/@tanstack/react-query/build/modern/useQueries.js" was ignored.
+14:34:09.782 node_modules/@tanstack/react-query/build/modern/useQuery.js (1:0): Module level directives cause errors when bundled, "use client" in "node_modules/@tanstack/react-query/build/modern/useQuery.js" was ignored.
+14:34:09.783 node_modules/@tanstack/react-query/build/modern/QueryClientProvider.js (1:0): Module level directives cause errors when bundled, "use client" in "node_modules/@tanstack/react-query/build/modern/QueryClientProvider.js" was ignored.
+14:34:09.784 node_modules/@tanstack/react-query/build/modern/HydrationBoundary.js (1:0): Module level directives cause errors when bundled, "use client" in "node_modules/@tanstack/react-query/build/modern/HydrationBoundary.js" was ignored.
+14:34:09.785 node_modules/@tanstack/react-query/build/modern/QueryErrorResetBoundary.js (1:0): Module level directives cause errors when bundled, "use client" in "node_modules/@tanstack/react-query/build/modern/QueryErrorResetBoundary.js" was ignored.
+14:34:09.788 node_modules/@tanstack/react-query/build/modern/useIsFetching.js (1:0): Module level directives cause errors when bundled, "use client" in "node_modules/@tanstack/react-query/build/modern/useIsFetching.js" was ignored.
+14:34:09.788 node_modules/@tanstack/react-query/build/modern/useMutationState.js (1:0): Module level directives cause errors when bundled, "use client" in "node_modules/@tanstack/react-query/build/modern/useMutationState.js" was ignored.
+14:34:09.788 node_modules/@tanstack/react-query/build/modern/useMutation.js (1:0): Module level directives cause errors when bundled, "use client" in "node_modules/@tanstack/react-query/build/modern/useMutation.js" was ignored.
+14:34:09.790 node_modules/@tanstack/react-query/build/modern/useInfiniteQuery.js (1:0): Module level directives cause errors when bundled, "use client" in "node_modules/@tanstack/react-query/build/modern/useInfiniteQuery.js" was ignored.
+14:34:09.795 node_modules/@tanstack/react-query/build/modern/IsRestoringProvider.js (1:0): Module level directives cause errors when bundled, "use client" in "node_modules/@tanstack/react-query/build/modern/IsRestoringProvider.js" was ignored.
+14:34:09.857 node_modules/@tanstack/react-query/build/modern/useSuspenseInfiniteQuery.js (1:0): Module level directives cause errors when bundled, "use client" in "node_modules/@tanstack/react-query/build/modern/useSuspenseInfiniteQuery.js" was ignored.
+14:34:09.870 node_modules/@tanstack/react-query/build/modern/useSuspenseQueries.js (1:0): Module level directives cause errors when bundled, "use client" in "node_modules/@tanstack/react-query/build/modern/useSuspenseQueries.js" was ignored.
+14:34:09.871 node_modules/@tanstack/react-query/build/modern/useSuspenseQuery.js (1:0): Module level directives cause errors when bundled, "use client" in "node_modules/@tanstack/react-query/build/modern/useSuspenseQuery.js" was ignored.
+14:34:09.879 client/src/components/ui/tooltip.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+14:34:09.881 client/src/components/ui/tooltip.tsx (1:0): Module level directives cause errors when bundled, "use client" in "client/src/components/ui/tooltip.tsx" was ignored.
+14:34:09.949 node_modules/@tanstack/react-query/build/modern/errorBoundaryUtils.js (1:0): Module level directives cause errors when bundled, "use client" in "node_modules/@tanstack/react-query/build/modern/errorBoundaryUtils.js" was ignored.
+14:34:10.381 node_modules/@tanstack/react-query/build/modern/useBaseQuery.js (1:0): Module level directives cause errors when bundled, "use client" in "node_modules/@tanstack/react-query/build/modern/useBaseQuery.js" was ignored.
+14:34:10.664 node_modules/@radix-ui/react-tooltip/dist/index.mjs (1:0): Module level directives cause errors when bundled, "use client" in "node_modules/@radix-ui/react-tooltip/dist/index.mjs" was ignored.
+14:34:10.717 client/src/components/ui/avatar.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+14:34:10.718 client/src/components/ui/avatar.tsx (1:0): Module level directives cause errors when bundled, "use client" in "client/src/components/ui/avatar.tsx" was ignored.
+14:34:10.721 client/src/components/ui/dialog.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+14:34:10.722 client/src/components/ui/dialog.tsx (1:0): Module level directives cause errors when bundled, "use client" in "client/src/components/ui/dialog.tsx" was ignored.
+14:34:10.840 client/src/components/ui/select.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+14:34:10.840 client/src/components/ui/select.tsx (1:0): Module level directives cause errors when bundled, "use client" in "client/src/components/ui/select.tsx" was ignored.
+14:34:12.332 node_modules/@radix-ui/react-dismissable-layer/dist/index.mjs (1:0): Module level directives cause errors when bundled, "use client" in "node_modules/@radix-ui/react-dismissable-layer/dist/index.mjs" was ignored.
+14:34:12.335 node_modules/@radix-ui/react-portal/dist/index.mjs (1:0): Module level directives cause errors when bundled, "use client" in "node_modules/@radix-ui/react-portal/dist/index.mjs" was ignored.
+14:34:12.337 node_modules/@radix-ui/react-popper/dist/index.mjs (1:0): Module level directives cause errors when bundled, "use client" in "node_modules/@radix-ui/react-popper/dist/index.mjs" was ignored.
+14:34:12.340 node_modules/@radix-ui/react-presence/dist/index.mjs (1:0): Module level directives cause errors when bundled, "use client" in "node_modules/@radix-ui/react-presence/dist/index.mjs" was ignored.
+14:34:12.348 node_modules/@radix-ui/react-label/dist/index.mjs (1:0): Module level directives cause errors when bundled, "use client" in "node_modules/@radix-ui/react-label/dist/index.mjs" was ignored.
+14:34:12.349 node_modules/@radix-ui/react-avatar/dist/index.mjs (1:0): Module level directives cause errors when bundled, "use client" in "node_modules/@radix-ui/react-avatar/dist/index.mjs" was ignored.
+14:34:12.352 node_modules/@radix-ui/react-switch/dist/index.mjs (1:0): Module level directives cause errors when bundled, "use client" in "node_modules/@radix-ui/react-switch/dist/index.mjs" was ignored.
+14:34:12.354 node_modules/@radix-ui/react-dialog/dist/index.mjs (1:0): Module level directives cause errors when bundled, "use client" in "node_modules/@radix-ui/react-dialog/dist/index.mjs" was ignored.
+14:34:12.376 node_modules/@radix-ui/react-select/dist/index.mjs (1:0): Module level directives cause errors when bundled, "use client" in "node_modules/@radix-ui/react-select/dist/index.mjs" was ignored.
+14:34:12.385 node_modules/@radix-ui/react-toast/dist/index.mjs (1:0): Module level directives cause errors when bundled, "use client" in "node_modules/@radix-ui/react-toast/dist/index.mjs" was ignored.
+14:34:12.472 client/src/components/ui/progress.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+14:34:12.473 client/src/components/ui/progress.tsx (1:0): Module level directives cause errors when bundled, "use client" in "client/src/components/ui/progress.tsx" was ignored.
+14:34:12.819 node_modules/@radix-ui/react-focus-scope/dist/index.mjs (1:0): Module level directives cause errors when bundled, "use client" in "node_modules/@radix-ui/react-focus-scope/dist/index.mjs" was ignored.
+14:34:12.820 node_modules/@radix-ui/react-focus-guards/dist/index.mjs (1:0): Module level directives cause errors when bundled, "use client" in "node_modules/@radix-ui/react-focus-guards/dist/index.mjs" was ignored.
+14:34:12.867 node_modules/@radix-ui/react-collection/dist/index.mjs (1:0): Module level directives cause errors when bundled, "use client" in "node_modules/@radix-ui/react-collection/dist/index.mjs" was ignored.
+14:34:12.905 node_modules/@radix-ui/react-dropdown-menu/dist/index.mjs (1:0): Module level directives cause errors when bundled, "use client" in "node_modules/@radix-ui/react-dropdown-menu/dist/index.mjs" was ignored.
+14:34:12.908 node_modules/@radix-ui/react-checkbox/dist/index.mjs (1:0): Module level directives cause errors when bundled, "use client" in "node_modules/@radix-ui/react-checkbox/dist/index.mjs" was ignored.
+14:34:12.909 node_modules/@radix-ui/react-scroll-area/dist/index.mjs (1:0): Module level directives cause errors when bundled, "use client" in "node_modules/@radix-ui/react-scroll-area/dist/index.mjs" was ignored.
+14:34:12.915 node_modules/@radix-ui/react-radio-group/dist/index.mjs (1:0): Module level directives cause errors when bundled, "use client" in "node_modules/@radix-ui/react-radio-group/dist/index.mjs" was ignored.
+14:34:12.918 node_modules/@radix-ui/react-progress/dist/index.mjs (1:0): Module level directives cause errors when bundled, "use client" in "node_modules/@radix-ui/react-progress/dist/index.mjs" was ignored.
+14:34:13.508 node_modules/@radix-ui/react-menu/dist/index.mjs (1:0): Module level directives cause errors when bundled, "use client" in "node_modules/@radix-ui/react-menu/dist/index.mjs" was ignored.
+14:34:13.515 node_modules/@radix-ui/react-roving-focus/dist/index.mjs (1:0): Module level directives cause errors when bundled, "use client" in "node_modules/@radix-ui/react-roving-focus/dist/index.mjs" was ignored.
+14:34:17.887 [32m✓[39m 3782 modules transformed.
+14:34:18.903 rendering chunks...
+14:34:19.661 computing gzip size...
+14:34:19.708 [2m../dist/public/[22m[32mindex.html                                         [39m[1m[2m    1.35 kB[22m[1m[22m[2m │ gzip:   0.63 kB[22m
+14:34:19.709 [2m../dist/public/[22m[2massets/[22m[32mlogo-braga-work_1765492800121-eaCejSGU.jpg  [39m[1m[2m    4.71 kB[22m[1m[22m
+14:34:19.709 [2m../dist/public/[22m[2massets/[22m[35mindex-COBHKQP2.css                          [39m[1m[2m   10.92 kB[22m[1m[22m[2m │ gzip:   2.30 kB[22m
+14:34:19.709 [2m../dist/public/[22m[2massets/[22m[36mpurify.es-B9ZVCkUG.js                       [39m[1m[2m   22.64 kB[22m[1m[22m[2m │ gzip:   8.75 kB[22m
+14:34:19.710 [2m../dist/public/[22m[2massets/[22m[36mindex.es-DYu4r9P3.js                        [39m[1m[2m  150.44 kB[22m[1m[22m[2m │ gzip:  51.42 kB[22m
+14:34:19.710 [2m../dist/public/[22m[2massets/[22m[36mhtml2canvas.esm-CBrSDip1.js                 [39m[1m[2m  201.42 kB[22m[1m[22m[2m │ gzip:  48.03 kB[22m
+14:34:19.710 [2m../dist/public/[22m[2massets/[22m[36mindex-DwkuJj-K.js                           [39m[1m[33m1,409.46 kB[39m[22m[2m │ gzip: 414.78 kB[22m
+14:34:19.710 [32m✓ built in 10.27s[39m
+14:34:19.710 building server...
+14:34:19.710 [33m
+14:34:19.710 (!) Some chunks are larger than 500 kB after minification. Consider:
+14:34:19.710 - Using dynamic import() to code-split the application
+14:34:19.710 - Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+14:34:19.710 - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.[39m
+14:34:19.983 
+14:34:19.983   dist/index.cjs  1.2mb ⚠️
+14:34:19.983 
+14:34:19.983 ⚡ Done in 258ms
+14:34:20.129 Installing dependencies...
+14:34:21.170 
+14:34:21.170 added 3 packages, and removed 1 package in 985ms
+14:34:21.171 
+14:34:21.172 57 packages are looking for funding
+14:34:21.172   run `npm fund` for details
+14:34:21.483 Using TypeScript 5.6.3 (local user-provided)
+14:34:27.245 api/index.ts(60,49): error TS2322: Type '"2025-01-27.acacia"' is not assignable to type '"2025-11-17.clover"'.
+14:34:27.246 api/index.ts(211,35): error TS2339: Property 'getProfileByUserId' does not exist on type 'DatabaseStorage'.
+14:34:27.246 api/index.ts(220,43): error TS2339: Property 'getProfileByUserId' does not exist on type 'DatabaseStorage'.
+14:34:27.246 api/index.ts(222,37): error TS2339: Property 'updateProfile' does not exist on type 'DatabaseStorage'.
+14:34:27.247 api/index.ts(225,37): error TS2339: Property 'createProfile' does not exist on type 'DatabaseStorage'.
+14:34:27.247 api/index.ts(239,34): error TS2551: Property 'getQuotesByUserId' does not exist on type 'DatabaseStorage'. Did you mean 'getQuotesByUser'?
+14:34:27.247 api/index.ts(256,98): error TS2339: Property 'serviceType' does not exist on type '{}'.
+14:34:27.247 api/index.ts(256,130): error TS2339: Property 'description' does not exist on type '{}'.
+14:34:27.247 api/index.ts(282,35): error TS2339: Property 'updateQuote' does not exist on type 'DatabaseStorage'.
+14:34:27.248 api/index.ts(292,36): error TS2339: Property 'getProjectsByUserId' does not exist on type 'DatabaseStorage'.
+14:34:27.248 api/index.ts(325,17): error TS2339: Property 'userId' does not exist on type '{ id: number; createdAt: Date; description: string; title: string; imageUrl: string; projectUrl: string; mediaType: string; isActive: boolean; displayOrder: number; }'.
+14:34:27.248 api/index.ts(366,33): error TS2551: Property 'getPaymentCodesByUserId' does not exist on type 'DatabaseStorage'. Did you mean 'getPaymentsByUser'?
+14:34:27.248 api/index.ts(386,30): error TS2339: Property 'expiresAt' does not exist on type '{ id: number; createdAt: Date; description: string; stripePaymentId: string; amount: string; code: string; isUsed: boolean; usedByEmail: string; usedByName: string; usedAt: Date; }'.
+14:34:27.249 api/index.ts(390,19): error TS2339: Property 'usePaymentCode' does not exist on type 'DatabaseStorage'.
+14:34:27.249 api/index.ts(400,40): error TS2551: Property 'getActiveSubscription' does not exist on type 'DatabaseStorage'. Did you mean 'getSubscription'?
+14:34:27.249 api/index.ts(435,33): error TS2339: Property 'getAdminStats' does not exist on type 'DatabaseStorage'.
+14:34:27.249 
+14:34:27.394 shared/schema.ts(163,66): error TS2322: Type 'boolean' is not assignable to type 'never'.
+14:34:27.397 shared/schema.ts(163,76): error TS2322: Type 'boolean' is not assignable to type 'never'.
+14:34:27.398 shared/schema.ts(164,68): error TS2322: Type 'boolean' is not assignable to type 'never'.
+14:34:27.398 shared/schema.ts(164,78): error TS2322: Type 'boolean' is not assignable to type 'never'.
+14:34:27.398 shared/schema.ts(165,72): error TS2322: Type 'boolean' is not assignable to type 'never'.
+14:34:27.399 shared/schema.ts(165,82): error TS2322: Type 'boolean' is not assignable to type 'never'.
+14:34:27.399 shared/schema.ts(166,70): error TS2322: Type 'boolean' is not assignable to type 'never'.
+14:34:27.399 shared/schema.ts(166,80): error TS2322: Type 'boolean' is not assignable to type 'never'.
+14:34:27.399 shared/schema.ts(166,97): error TS2322: Type 'boolean' is not assignable to type 'never'.
+14:34:27.400 shared/schema.ts(167,80): error TS2322: Type 'boolean' is not assignable to type 'never'.
+14:34:27.400 shared/schema.ts(167,90): error TS2322: Type 'boolean' is not assignable to type 'never'.
+14:34:27.400 shared/schema.ts(167,107): error TS2322: Type 'boolean' is not assignable to type 'never'.
+14:34:27.400 shared/schema.ts(167,121): error TS2322: Type 'boolean' is not assignable to type 'never'.
+14:34:27.400 shared/schema.ts(168,72): error TS2322: Type 'boolean' is not assignable to type 'never'.
+14:34:27.401 shared/schema.ts(168,82): error TS2322: Type 'boolean' is not assignable to type 'never'.
+14:34:27.401 shared/schema.ts(169,82): error TS2322: Type 'boolean' is not assignable to type 'never'.
+14:34:27.401 shared/schema.ts(169,92): error TS2322: Type 'boolean' is not assignable to type 'never'.
+14:34:27.401 shared/schema.ts(170,84): error TS2322: Type 'boolean' is not assignable to type 'never'.
+14:34:27.401 shared/schema.ts(170,94): error TS2322: Type 'boolean' is not assignable to type 'never'.
+14:34:27.402 shared/schema.ts(171,80): error TS2322: Type 'boolean' is not assignable to type 'never'.
+14:34:27.402 shared/schema.ts(171,90): error TS2322: Type 'boolean' is not assignable to type 'never'.
+14:34:27.402 
+14:34:29.602 Build Completed in /vercel/output [1m]
+14:34:29.830 Deploying outputs...
+14:34:36.132 Deployment completed
+14:34:37.077 Creating build cache...
+14:34:58.851 Created build cache: 21.769s
+14:34:58.851 Uploading build cache [106.15 MB]
+14:35:00.062 Build cache uploaded: 1.215s
