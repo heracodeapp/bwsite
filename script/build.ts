@@ -54,6 +54,7 @@ async function buildAll() {
         "@shared": path.resolve(projectRoot, "shared"),
         "@assets": path.resolve(projectRoot, "attached_assets"),
       },
+      extensions: ['.mjs', '.js', '.mts', '.ts', '.jsx', '.tsx', '.json'],
     },
     build: {
       outDir: path.resolve(projectRoot, "dist/public"),
