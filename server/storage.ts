@@ -11,7 +11,7 @@ import {
   type Subscription, type InsertSubscription,
   type MonthlyReport, type InsertMonthlyReport,
   type ChatMessage, type InsertChatMessage,
-} from "../shared/schema";
+} from "@shared/schema";
 
 export interface IStorage {
   // Users
