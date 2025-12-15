@@ -4,10 +4,18 @@ import session from "express-session";
 import connectPgSimple from "connect-pg-simple";
 import passport from "passport";
 import { Strategy as GoogleStrategy } from "passport-google-oauth20";
-import { storage } from "./storage";
+import { storage, IStorage } from "./storage";
 import { pool } from "./db";
 import { insertQuoteSchema, insertProjectSchema, insertReviewSchema, insertPaymentCodeSchema } from "@shared/schema";
 import { z } from "zod";
+
+// Helper function to get storage with null check
+function getStorage(): IStorage {
+  if (!storage) {
+    throw new Error("Database not configured");
+  }
+  return storage;
+}
 
 // WhatsApp notification via CallMeBot
 async function sendWhatsAppNotification(message: string): Promise<void> {
@@ -129,16 +137,16 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
         },
         async (accessToken, refreshToken, profile, done) => {
           try {
-            let user = await storage.getUserByGoogleId(profile.id);
+            let user = await getStorage().getUserByGoogleId(profile.id);
 
             if (!user) {
               const email = profile.emails?.[0]?.value || "";
-              user = await storage.getUserByEmail(email);
+              user = await getStorage().getUserByEmail(email);
 
               if (user) {
-                user = await storage.updateUser(user.id, { googleId: profile.id });
+                user = await getStorage().updateUser(user.id, { googleId: profile.id });
               } else {
-                user = await storage.createUser({
+                user = await getStorage().createUser({
                   googleId: profile.id,
                   email,
                   username: email.split("@")[0] + "_" + Date.now(),
@@ -164,7 +172,7 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
 
   passport.deserializeUser(async (id: number, done) => {
     try {
-      const user = await storage.getUser(id);
+      const user = await getStorage().getUser(id);
       done(null, user || undefined);
     } catch (error) {
       done(error);
@@ -224,7 +232,7 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
   // Profile routes (user's own data)
   app.get("/api/profile/quotes", requireAuth, async (req, res) => {
     try {
-      const quotes = await storage.getQuotesByUser(req.user!.id);
+      const quotes = await getStorage().getQuotesByUser(req.user!.id);
       res.json(quotes);
     } catch (error) {
       res.status(500).json({ error: "Erro ao buscar orçamentos" });
@@ -233,7 +241,7 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
 
   app.get("/api/profile/subscriptions", requireAuth, async (req, res) => {
     try {
-      const subscriptions = await storage.getSubscriptionsByUser(req.user!.id);
+      const subscriptions = await getStorage().getSubscriptionsByUser(req.user!.id);
       res.json(subscriptions);
     } catch (error) {
       res.status(500).json({ error: "Erro ao buscar assinaturas" });
@@ -242,7 +250,7 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
 
   app.get("/api/profile/reviews", requireAuth, async (req, res) => {
     try {
-      const reviews = await storage.getReviewsByUser(req.user!.id);
+      const reviews = await getStorage().getReviewsByUser(req.user!.id);
       res.json(reviews);
     } catch (error) {
       res.status(500).json({ error: "Erro ao buscar avaliações" });
@@ -251,7 +259,7 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
 
   app.get("/api/profile/payments", requireAuth, async (req, res) => {
     try {
-      const payments = await storage.getPaymentsByUser(req.user!.id);
+      const payments = await getStorage().getPaymentsByUser(req.user!.id);
       res.json(payments);
     } catch (error) {
       res.status(500).json({ error: "Erro ao buscar pagamentos" });
@@ -266,7 +274,7 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
         userId: req.user?.id || null,
         status: "pending",
       });
-      const quote = await storage.createQuote(data);
+      const quote = await getStorage().createQuote(data);
 
       // Send WhatsApp notification
       const serviceTypeLabel = req.body.serviceType === "website" ? "Website" : "Aplicativo";
@@ -298,7 +306,7 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
 
   app.get("/api/quotes", requireAdmin, async (req, res) => {
     try {
-      const quotes = await storage.getAllQuotes();
+      const quotes = await getStorage().getAllQuotes();
       res.json(quotes);
     } catch (error) {
       res.status(500).json({ error: "Erro ao buscar orçamentos" });
@@ -308,7 +316,7 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
   app.patch("/api/quotes/:id/status", requireAdmin, async (req, res) => {
     try {
       const { status } = req.body;
-      const quote = await storage.updateQuoteStatus(parseInt(req.params.id), status);
+      const quote = await getStorage().updateQuoteStatus(parseInt(req.params.id), status);
       res.json(quote);
     } catch (error) {
       res.status(500).json({ error: "Erro ao atualizar orçamento" });
@@ -318,7 +326,7 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
   // Projects routes
   app.get("/api/projects", async (req, res) => {
     try {
-      const projects = await storage.getAllProjects();
+      const projects = await getStorage().getAllProjects();
       res.json(projects);
     } catch (error) {
       res.status(500).json({ error: "Erro ao buscar projetos" });
@@ -327,7 +335,7 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
 
   app.get("/api/projects/active", async (req, res) => {
     try {
-      const projects = await storage.getActiveProjects();
+      const projects = await getStorage().getActiveProjects();
       res.json(projects);
     } catch (error) {
       res.status(500).json({ error: "Erro ao buscar projetos" });
@@ -337,7 +345,7 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
   app.post("/api/projects", requireAdmin, async (req, res) => {
     try {
       const data = insertProjectSchema.parse(req.body);
-      const project = await storage.createProject(data);
+      const project = await getStorage().createProject(data);
       res.status(201).json(project);
     } catch (error) {
       if (error instanceof z.ZodError) {
@@ -350,7 +358,7 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
 
   app.patch("/api/projects/:id", requireAdmin, async (req, res) => {
     try {
-      const project = await storage.updateProject(parseInt(req.params.id), req.body);
+      const project = await getStorage().updateProject(parseInt(req.params.id), req.body);
       res.json(project);
     } catch (error) {
       res.status(500).json({ error: "Erro ao atualizar projeto" });
@@ -359,7 +367,7 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
 
   app.delete("/api/projects/:id", requireAdmin, async (req, res) => {
     try {
-      await storage.deleteProject(parseInt(req.params.id));
+      await getStorage().deleteProject(parseInt(req.params.id));
       res.json({ success: true });
     } catch (error) {
       res.status(500).json({ error: "Erro ao deletar projeto" });
@@ -369,7 +377,7 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
   // Reviews routes
   app.get("/api/reviews/approved", async (req, res) => {
     try {
-      const reviews = await storage.getApprovedReviews();
+      const reviews = await getStorage().getApprovedReviews();
       res.json(reviews);
     } catch (error) {
       res.status(500).json({ error: "Erro ao buscar avaliações" });
@@ -378,7 +386,7 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
 
   app.get("/api/reviews", requireAdmin, async (req, res) => {
     try {
-      const reviews = await storage.getAllReviews();
+      const reviews = await getStorage().getAllReviews();
       res.json(reviews);
     } catch (error) {
       res.status(500).json({ error: "Erro ao buscar avaliações" });
@@ -391,7 +399,7 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
         ...req.body,
         userId: req.user!.id,
       });
-      const review = await storage.createReview(data);
+      const review = await getStorage().createReview(data);
       res.status(201).json(review);
     } catch (error) {
       if (error instanceof z.ZodError) {
@@ -404,7 +412,7 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
 
   app.patch("/api/reviews/:id/approve", requireAdmin, async (req, res) => {
     try {
-      const review = await storage.approveReview(parseInt(req.params.id));
+      const review = await getStorage().approveReview(parseInt(req.params.id));
       res.json(review);
     } catch (error) {
       res.status(500).json({ error: "Erro ao aprovar avaliação" });
@@ -413,7 +421,7 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
 
   app.delete("/api/reviews/:id", requireAdmin, async (req, res) => {
     try {
-      await storage.deleteReview(parseInt(req.params.id));
+      await getStorage().deleteReview(parseInt(req.params.id));
       res.json({ success: true });
     } catch (error) {
       res.status(500).json({ error: "Erro ao deletar avaliação" });
@@ -424,7 +432,7 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
   app.post("/api/payment-codes/verify", async (req, res) => {
     try {
       const { code } = req.body;
-      const paymentCode = await storage.getPaymentCodeByCode(code);
+      const paymentCode = await getStorage().getPaymentCodeByCode(code);
 
       if (!paymentCode) {
         return res.status(404).json({ error: "Código não encontrado" });
@@ -448,7 +456,7 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
   app.post("/api/payment-codes/process", async (req, res) => {
     try {
       const { code, name, email } = req.body;
-      const paymentCode = await storage.getPaymentCodeByCode(code);
+      const paymentCode = await getStorage().getPaymentCodeByCode(code);
 
       if (!paymentCode || paymentCode.isUsed) {
         return res.status(400).json({ error: "Código inválido ou já utilizado" });
@@ -498,7 +506,7 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
         const { code, name, email } = event.data?.metadata || {};
 
         if (code) {
-          await storage.markPaymentCodeAsUsed(code, email, name, event.data?.id || "whop_payment");
+          await getStorage().markPaymentCodeAsUsed(code, email, name, event.data?.id || "whop_payment");
         }
       }
 
@@ -558,7 +566,7 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
 
   app.get("/api/payment-codes", requireAdmin, async (req, res) => {
     try {
-      const codes = await storage.getAllPaymentCodes();
+      const codes = await getStorage().getAllPaymentCodes();
       res.json(codes);
     } catch (error) {
       res.status(500).json({ error: "Erro ao buscar códigos" });
@@ -572,10 +580,10 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
       };
 
       let code = generateCode();
-      let existing = await storage.getPaymentCodeByCode(code);
+      let existing = await getStorage().getPaymentCodeByCode(code);
       while (existing) {
         code = generateCode();
-        existing = await storage.getPaymentCodeByCode(code);
+        existing = await getStorage().getPaymentCodeByCode(code);
       }
 
       const data = insertPaymentCodeSchema.parse({
@@ -584,7 +592,7 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
         description: req.body.description,
       });
 
-      const paymentCode = await storage.createPaymentCode(data);
+      const paymentCode = await getStorage().createPaymentCode(data);
       res.status(201).json(paymentCode);
     } catch (error) {
       if (error instanceof z.ZodError) {
@@ -598,7 +606,7 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
   app.delete("/api/payment-codes/:id", requireAdmin, async (req, res) => {
     try {
       const id = parseInt(req.params.id);
-      const deleted = await storage.deletePaymentCode(id);
+      const deleted = await getStorage().deletePaymentCode(id);
       if (deleted) {
         res.json({ success: true });
       } else {
@@ -612,12 +620,13 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
   // Admin Dashboard Stats
   app.get("/api/admin/stats", requireAdmin, async (req, res) => {
     try {
+      const db = getStorage();
       const [users, quotes, payments, subscriptions, reviews] = await Promise.all([
-        storage.getAllUsers(),
-        storage.getAllQuotes(),
-        storage.getAllPayments(),
-        storage.getAllSubscriptions(),
-        storage.getAllReviews(),
+        db.getAllUsers(),
+        db.getAllQuotes(),
+        db.getAllPayments(),
+        db.getAllSubscriptions(),
+        db.getAllReviews(),
       ]);
 
       const activeSubscriptions = subscriptions.filter((s) => s.status === "active");
@@ -699,7 +708,7 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
   // Extended review stats
   app.get("/api/admin/review-trends", requireAdmin, async (req, res) => {
     try {
-      const reviews = await storage.getAllReviews();
+      const reviews = await getStorage().getAllReviews();
       
       const ratingDistribution = [0, 0, 0, 0, 0];
       reviews.forEach((r) => {
@@ -723,7 +732,7 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
 
   app.get("/api/admin/users", requireAdmin, async (req, res) => {
     try {
-      const users = await storage.getAllUsers();
+      const users = await getStorage().getAllUsers();
       res.json(users);
     } catch (error) {
       res.status(500).json({ error: "Erro ao buscar usuários" });
@@ -732,7 +741,7 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
 
   app.get("/api/admin/subscriptions", requireAdmin, async (req, res) => {
     try {
-      const subscriptions = await storage.getAllSubscriptionsWithUsers();
+      const subscriptions = await getStorage().getAllSubscriptionsWithUsers();
       res.json(subscriptions);
     } catch (error) {
       res.status(500).json({ error: "Erro ao buscar assinaturas" });
@@ -741,7 +750,7 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
 
   app.get("/api/admin/payment-codes/used", requireAdmin, async (req, res) => {
     try {
-      const codes = await storage.getUsedPaymentCodes();
+      const codes = await getStorage().getUsedPaymentCodes();
       res.json(codes);
     } catch (error) {
       res.status(500).json({ error: "Erro ao buscar pagamentos por código" });
@@ -750,7 +759,7 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
 
   app.get("/api/admin/payments", requireAdmin, async (req, res) => {
     try {
-      const payments = await storage.getAllPayments();
+      const payments = await getStorage().getAllPayments();
       res.json(payments);
     } catch (error) {
       res.status(500).json({ error: "Erro ao buscar pagamentos" });
