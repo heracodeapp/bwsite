@@ -43,23 +43,7 @@ async function buildAll() {
   console.log("building client...");
   const projectRoot = path.resolve(__dirname, "..");
   await viteBuild({
-    root: path.resolve(projectRoot, "client"),
     configFile: path.resolve(projectRoot, "vite.config.ts"),
-    plugins: [
-      react(),
-    ],
-    resolve: {
-      alias: {
-        "@": path.resolve(projectRoot, "client", "src"),
-        "@shared": path.resolve(projectRoot, "shared"),
-        "@assets": path.resolve(projectRoot, "attached_assets"),
-      },
-      extensions: ['.mjs', '.js', '.mts', '.ts', '.jsx', '.tsx', '.json'],
-    },
-    build: {
-      outDir: path.resolve(projectRoot, "dist/public"),
-      emptyOutDir: true,
-    },
   });
 
   console.log("building server...");
