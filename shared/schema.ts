@@ -219,11 +219,9 @@ export const insertPaymentSchema = z.object({
 export const insertSubscriptionSchema = z.object({
   userId: z.number(),
   stripeSubscriptionId: z.string(),
-  stripeCustomerId: z.string(),
+  stripePriceId: z.string(),
   planType: z.string(),
-  amount: z.string(),
   status: z.string(),
-  currentPeriodStart: z.date().optional().nullable(),
   currentPeriodEnd: z.date().optional().nullable(),
 });
 
