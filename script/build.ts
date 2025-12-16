@@ -1,4 +1,4 @@
-import { build as esbuild, Plugin } from "esbuild";
+import { build as esbuild } from "esbuild";
 import { build as viteBuild } from "vite";
 import react from "@vitejs/plugin-react";
 import { rm, readFile } from "fs/promises";
@@ -6,20 +6,6 @@ import path from "path";
 import { fileURLToPath } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const projectRoot = path.resolve(__dirname, "..");
-
-// Custom plugin to resolve @shared alias
-const sharedAliasPlugin: Plugin = {
-  name: "shared-alias",
-  setup(build) {
-    build.onResolve({ filter: /^@shared\// }, (args) => {
-      const relativePath = args.path.replace(/^@shared\//, "");
-      return {
-        path: path.resolve(projectRoot, "shared", relativePath + ".ts"),
-      };
-    });
-  },
-};
 
 // server deps to bundle to reduce openat(2) syscalls
 // which helps cold start times
@@ -55,6 +41,7 @@ async function buildAll() {
   await rm("dist", { recursive: true, force: true });
 
   console.log("building client...");
+  const projectRoot = path.resolve(__dirname, "..");
   await viteBuild({
     configFile: path.resolve(projectRoot, "vite.config.ts"),
   });
@@ -81,7 +68,9 @@ async function buildAll() {
     external: externals,
     logLevel: "info",
     resolveExtensions: [".ts", ".js", ".json"],
-    plugins: [sharedAliasPlugin],
+    alias: {
+      "@shared": path.resolve(projectRoot, "shared"),
+    },
   });
 
 }
@@ -90,4 +79,3 @@ buildAll().catch((err) => {
   console.error(err);
   process.exit(1);
 });
- 
