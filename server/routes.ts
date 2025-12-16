@@ -278,8 +278,9 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
 
       // Send WhatsApp notification
       const serviceTypeLabel = req.body.serviceType === "website" ? "Website" : "Aplicativo";
-      const additionalsLabel = req.body.additionals?.length > 0 
-        ? req.body.additionals.join(", ") 
+      const additionals = Array.isArray(req.body.additionals) ? req.body.additionals : [];
+      const additionalsLabel = additionals.length > 0 
+        ? additionals.join(", ") 
         : "Nenhuma";
       
       const message = `*Novo Orcamento Recebido!*
